@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>FinTech Dashboard</h1>
+    <nav>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="stock-details.html">Stock Details</a>
+      <a href="ai-recommendations.html">AI Recommendations</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+  </header>
+
+  <div class="content">
+    <h2>Portfolio Overview</h2>
+    <div>
+      <p><strong>Total Investments:</strong> $<span id="totalInvestments">0</span></p>
+      <p><strong>Current Portfolio Value:</strong> $<span id="currentPortfolioValue">0</span></p>
+    </div>
+
+    <h2>Top Stocks</h2>
+    <table id="stockTable">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Price</th>
+          <th>Change (%)</th>
+          <th>Volume</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Stock data will be inserted here -->
+      </tbody>
+    </table>
+
+    <h2>Upload Portfolio CSV</h2>
+    <form id="csvUploadForm">
+      <input type="file" id="csvUpload" accept=".csv" />
+      <button type="button" onclick="handleCSVUpload()">Upload</button>
+    </form>
+
+    <div id="statusMessage"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

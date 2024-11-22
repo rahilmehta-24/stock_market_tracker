@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Fintech</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="stock-details.html">Stock Details</a></li>
+                <li><a href="ai-recommendations.html">AI Recommendations</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+
+        <section id="settings" class="section">
+            <h1>Profile Settings</h1>
+            <p>Name: <input type="text" id="userName" placeholder="Enter your name"></p>
+            <p>Email: <input type="email" id="userEmail" placeholder="Enter your email"></p>
+
+            <h2>API Integrations</h2>
+            <p>Stock Data Provider: Alpha Vantage</p>
+            <p>Update Frequency: <input type="number" id="updateFrequency" value="5" min="1"> seconds</p>
+
+            <h2>Notification Settings</h2>
+            <label for="emailAlerts">Email Alerts: </label>
+            <input type="checkbox" id="emailAlerts">
+            <label for="pushNotifications">Real-Time Push Notifications: </label>
+            <input type="checkbox" id="pushNotifications">
+        </section>
+    </div>
+
+</body>
+</html>

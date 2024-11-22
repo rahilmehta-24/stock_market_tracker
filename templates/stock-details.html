@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Details - Fintech</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="stock-details.html">Stock Details</a></li>
+                <li><a href="ai-recommendations.html">AI Recommendations</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+
+        <section id="stock-details" class="section">
+            <h1>Stock Details</h1>
+            <p>Enter Stock Symbol: <input type="text" id="stockInput" placeholder="e.g. AAPL" oninput="fetchStockDetails()"></p>
+
+            <div id="stockInfo">
+                <p>Current Price: $<span id="currentPrice">0.00</span></p>
+                <p>Daily Change: <span id="dailyChange">0.00%</span></p>
+                <p>Volume: <span id="volume">0</span></p>
+                <p>52-Week High: $<span id="weekHigh">0.00</span></p>
+                <p>52-Week Low: $<span id="weekLow">0.00</span></p>
+            </div>
+
+            <h2>News Section</h2>
+            <ul id="newsList">
+                <!-- News will be dynamically inserted here -->
+            </ul>
+        </section>
+    </div>
+
+</body>
+</html>

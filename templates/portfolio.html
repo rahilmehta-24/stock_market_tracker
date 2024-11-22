@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Header Section with Navigation -->
+    <header>
+        <h1>Welcome to Your Stock Portfolio</h1>
+        <nav>
+            <a href="/">Home</a> | 
+            <a href="/portfolio">Portfolio</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Portfolio Overview</h1>
+
+        <!-- Display the total invested and current value -->
+        <div class="summary">
+            <p><strong>Total Invested Value:</strong> INR <span id="total-invested">{{ total_invested }}</span></p>
+            <p><strong>Total Current Value:</strong> INR <span id="total-current-value">{{ total_current_value }}</span></p>
+        </div>
+
+        <!-- Top 5 Gainers -->
+        <div class="top-gainers">
+            <h2>Top 5 Gainers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Gain/Loss</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stock in top_gainers %}
+                    <tr>
+                        <td>{{ stock.symbol }}</td>
+                        <td>INR {{ stock.gain_loss | round(2) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Top 5 Losers -->
+        <div class="top-losers">
+            <h2>Top 5 Losers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Gain/Loss</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stock in top_losers %}
+                    <tr>
+                        <td>{{ stock.symbol }}</td>
+                        <td>INR {{ stock.gain_loss | round(2) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add buttons for CRUD operations -->
+        <div class="crud-buttons">
+            <button id="add-stock-btn">Add New Stock</button>
+            <button id="update-stock-btn">Update Stock</button>
+            <button id="delete-stock-btn">Delete Stock</button>
+            <button id="delete-all-btn" class="btn btn-danger">Delete Entire Portfolio</button>
+        </div>
+
+        <!-- Table of Stocks -->
+        <h2>Portfolio Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Symbol</th>
+                    <th>Quantity</th>
+                    <th>Buy Price</th>
+                    <th>Current Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in pagination.items %}
+                    <tr>
+                        <td>{{ stock.id }}</td>
+                        <td>{{ stock.symbol }}</td>
+                        <td>{{ stock.quantity }}</td>
+                        <td>${{ stock.buyPrice }}</td>
+                        <td>${{ stock.currentPrice }}</td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Pagination Controls -->
+        <div class="pagination">
+            {% if pagination.has_prev %}
+                <a href="{{ url_for('portfolio', page=pagination.prev_num) }}" class="prev">Previous</a>
+            {% else %}
+                <span class="disabled">Previous</span>
+            {% endif %}
+        
+            <span class="current-page">Page {{ pagination.page }} of {{ pagination.pages }}</span>
+        
+            {% if pagination.has_next %}
+                <a href="{{ url_for('portfolio', page=pagination.next_num) }}" class="next">Next</a>
+            {% else %}
+                <span class="disabled">Next</span>
+            {% endif %}
+        </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
